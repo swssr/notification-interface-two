@@ -5,11 +5,11 @@ import { HomeComponent } from './pages/home/home.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '',
+    redirectTo: 'trigger',
     pathMatch: 'full'
   },
   {
-    path: '',
+    path: 'trigger',
     component: HomeComponent,
   }
 ];

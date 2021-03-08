@@ -1,61 +1,59 @@
 <div class="container h-100">
-    <div class="row h-100 justify-content-center align-items-center">
-        <mat-card class="col-12 col-lg-8">
-            <div *ngIf="errorMsg || successMsg" class="col-12 col-lg-8 offset-lg-2 mt-4 mb-4">
-                <div class="alert alert-danger" role="alert" *ngIf="errorMsg">
-                    <strong id="alert-msg">{{errorMsg}}</strong>
-                </div>
-                <div class="alert alert-success" role="alert" *ngIf="successMsg">
-                    <strong id="alert-msg">{{successMsg}}</strong>
-                </div>
+  <div class="row h-100 justify-content-center align-items-center">
+    <mat-card class="col-12 col-lg-8">
+      <div *ngIf="errorMsg || successMsg" class="col-12 col-lg-8 offset-lg-2 mt-4 mb-4">
+        <div class="alert alert-danger" role="alert" *ngIf="errorMsg">
+          <strong id="alert-msg">{{errorMsg}}</strong>
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="successMsg">
+          <strong id="alert-msg">{{successMsg}}</strong>
+        </div>
+      </div>
+      <mat-card-content class="col-12 col-lg-10 offset-lg-1  mt-4 mb-4">
+        <mat-card-title class="col-12 text-center">Trigger Notification Modals/Popups</mat-card-title>
+        <form [formGroup]="notificationForm" (ngSubmit)="onLogin()" class="mt-4 mb-4">
+          <div class="form-row">
+            <div class="col">
+              <mat-form-field appearance="outline" class="mt-2 mb-2">
+                <mat-label>User uid</mat-label>
+                <input matInput formControlName="userUid" name="userUid" placeholder="userUid">
+                <mat-hint class="text-danger" *ngIf="(isSubmitted && notificationForm.get('userUid').errors)">
+                  Please
+                  enter a valid user uid!
+                </mat-hint>
+              </mat-form-field>
             </div>
-            <mat-card-content class="col-12 col-lg-10 offset-lg-1  mt-4 mb-4">
-                <mat-card-title class="col-12 text-center">Trigger Notification Modals/Popups</mat-card-title>
-                <form [formGroup]="notificationForm" (ngSubmit)="onLogin()" class="mt-4 mb-4">
-                    <div class="form-row">
-                        <div class="col">
-                            <mat-form-field appearance="outline" class="mt-2 mb-2">
-                                <mat-label>User uid</mat-label>
-                                <input matInput formControlName="userUid" name="userUid" placeholder="userUid">
-                                <mat-hint class="text-danger"
-                                    *ngIf="(isSubmitted && notificationForm.get('userUid').errors)">
-                                    Please
-                                    enter a valid user uid!
-                                </mat-hint>
-                            </mat-form-field>
-                        </div>
-                        <div class="col">
-                            <mat-form-field appearance="fill" class="mt-2 mb-2">
-                                <mat-label>Type</mat-label>
-                                <mat-select formControlName="templateUid" name="templateUid">
-                                    <mat-option value="bansela_bucks_celebratory">
-                                        celebratory
-                                    </mat-option>
-                                    <mat-option value="bansela_bucks_information">
-                                        information
-                                    </mat-option>
-                                    <mat-option value="bansela_bucks_toaster">
-                                        toaster
-                                    </mat-option>
-                                </mat-select>
-                                <mat-hint class="text-danger"
-                                    *ngIf="(isSubmitted && notificationForm.get('templateUid').errors)">
-                                    Please
-                                    select a valid notification type!
-                                </mat-hint>
-                            </mat-form-field>
-                        </div>
-                    </div>
-                    <div class="text-center mt-2 mb-2" *ngIf="isLoading">
-                        <button mat-raised-button class="col-6 btn btn-spinner uploader-status mt-3 mb-3 text-center">
-                            <mat-spinner style="margin:0 auto;" mode="indeterminate" diameter="25"></mat-spinner>
-                        </button>
-                    </div>
-                    <div class="text-center mt-2 mb-2" *ngIf="!isLoading">
-                        <button mat-raised-button color="primary" class="col-6 text-uppercase">TRIGGER</button>
-                    </div>
-                </form>
-            </mat-card-content>
-        </mat-card>
-    </div>
+            <div class="col">
+              <mat-form-field appearance="fill" class="mt-2 mb-2">
+                <mat-label>Type</mat-label>
+                <mat-select formControlName="templateUid" name="templateUid">
+                  <mat-option value="bansela_bucks_celebratory">
+                    bansela_bucks_celebratory
+                  </mat-option>
+                  <mat-option value="bansela_bucks_information">
+                    bansela_bucks_information
+                  </mat-option>
+                  <mat-option value="bansela_bucks_toaster">
+                    bansela_bucks_toaster
+                  </mat-option>
+                </mat-select>
+                <mat-hint class="text-danger" *ngIf="(isSubmitted && notificationForm.get('templateUid').errors)">
+                  Please
+                  select a valid notification type!
+                </mat-hint>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="text-center mt-2 mb-2" *ngIf="isLoading">
+            <button mat-raised-button class="col-6 btn btn-spinner uploader-status mt-3 mb-3 text-center">
+              <mat-spinner style="margin:0 auto;" mode="indeterminate" diameter="25"></mat-spinner>
+            </button>
+          </div>
+          <div class="text-center mt-2 mb-2" *ngIf="!isLoading">
+            <button mat-raised-button color="primary" class="col-6 text-uppercase">TRIGGER</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
